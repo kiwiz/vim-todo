@@ -13,11 +13,10 @@ syn match tdlItemDone    /^\s*x .*/
 syn match tdlItemUnknown /^\s*% .*/
 syn match tdlTitle       /^# .*/
 
-hi def tdlItemBacklog ctermfg=12
-hi def tdlItemCurrent ctermfg=2
-hi def tdlItemBlocked ctermfg=1
-hi def tdlItemDone    ctermfg=10
-hi def tdlItemUnknown ctermfg=13
-hi def tdlTitle       ctermfg=9 cterm=bold,underline
+hi def link tdlItemCurrent Statement
+hi def link tdlItemBlocked Special
+hi def link tdlItemDone    Comment
+hi def link tdlItemUnknown Underlined
+hi def link tdlTitle       Title
 
 let b:current_syntax = "todo"

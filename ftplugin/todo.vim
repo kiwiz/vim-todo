@@ -10,7 +10,7 @@ endfunction
 
 let maplocalleader='\'
 
-nmap <LocalLeader>D :g/^\s*x .*/d<cr>
+nmap <LocalLeader>D :g/^\s*x .*/d <bar> noh<cr>
 
 nmap <LocalLeader>- :call TodoSetStatus('.', '-')<cr>
 nmap <LocalLeader>@ :call TodoSetStatus('.', '@')<cr>
@@ -19,3 +19,9 @@ nmap <LocalLeader>! :call TodoSetStatus('.', '!')<cr>
 nmap <LocalLeader>% :call TodoSetStatus('.', '%')<cr>
 
 set comments=b:#,n:>,b:-,b:!,b:@,b:x
+
+setlocal foldmethod=expr
+setlocal foldexpr=(getline(v:lnum)=~'^$')?-1:((indent(v:lnum)<indent(v:lnum+1))?('>'.indent(v:lnum+1)):indent(v:lnum))
+set foldtext=getline(v:foldstart)
+set fillchars=fold:\ 
+set foldlevel=1
